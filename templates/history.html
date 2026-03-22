@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Prediction History{% endblock %}
+
+{% block content %}
+<div class="main-card">
+    <h1>Prediction History</h1>
+    <p class="subtitle">Stored prediction results with placement officer confirmation</p>
+
+    <div class="history-top-bar">
+
+    <form method="GET" action="{{ url_for('history') }}" class="search-form">
+        <input
+            type="text"
+            name="lead_id"
+            placeholder="Search Lead ID"
+            value="{{ search_lead }}"
+        >
+        <button type="submit" class="btn">Search</button>
+    </form>
+
+    <div class="button-group">
+        <a href="{{ url_for('export_csv') }}" class="btn">Export CSV</a>
+        <a href="{{ url_for('export_excel') }}" class="btn">Export Excel</a>
+    </div>
+
+</div>
+
+    <div class="table-wrapper">
+        <table class="history-table">
+            <thead>
+                <tr>
+                    <th>Lead ID</th>
+                    <th>Contact Owner</th>
+                    <th>Track Interested</th>
+                    <th>District</th>
+                    <th>Source of lead</th>
+                    <th>Course</th>
+                    <th>Specialization</th>
+                    <th>Gender</th>
+                    <th>Probability</th>
+                    <th>Score</th>
+                    <th>Predicted At</th>
+                    <th>Conversion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    <td>{{ row["lead_id"] }}</td>
+                    <td>{{ row["contact_owner"] }}</td>
+                    <td>{{ row["track_interested"] }}</td>
+                    <td>{{ row["district"] }}</td>
+                    <td>{{ row["source_of_lead"] }}</td>
+                    <td>{{ row["course"] }}</td>
+                    <td>{{ row["specialization"] }}</td>
+                    <td>{{ row["gender"] }}</td>
+                    <td>{{ "%.2f"|format(row["conversion_probability"] * 100) }}%</td>
+                    <td>{{ "%.2f"|format(row["score"]) }}</td>
+                    <td>{{ row["predicted_at"] }}</td>
+                    <td>
+                        <form action="{{ url_for('toggle_conversion', record_id=row['id']) }}" method="POST" class="square-form">
+                            <button
+                                type="submit"
+                                class="square-btn {% if row['actual_outcome'] == 1 %}checked{% endif %}"
+                                title="{% if row['actual_outcome'] == 1 %}Click to untick{% else %}Click to tick as converted{% endif %}"
+                            >
+                                {% if row['actual_outcome'] == 1 %}✓{% endif %}
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="button-group">
+        <a href="{{ url_for('home') }}" class="btn secondary">Back Home</a>
+        <a href="{{ url_for('predict') }}" class="btn">Go to Prediction</a>
+        <a href="{{ url_for('dashboard') }}" class="btn secondary">Dashboard</a>
+    </div>
+</div>
+{% endblock %}

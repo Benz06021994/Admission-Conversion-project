@@ -1,0 +1,30 @@
+{
+    "input_schema": {
+        "Contact Owner": "string",
+        "Track Interested": "string",
+        "District": "string",
+        "Source of lead": "string",
+        "Course": "string",
+        "Specialization": "string",
+        "Gender": "string"
+    },
+    "processing_rules": {
+        "inside_pipeline": true,
+        "text_normalization": "strip + collapse spaces; missing -> Unspecified",
+        "course_normalization": "uppercase",
+        "gender_normalization": "title case",
+        "source_grouping": "Source of lead mapped to SourceGroup buckets",
+        "rate_features": [
+            "OwnerRate",
+            "CourseRate",
+            "TrackRate",
+            "DistrictRate",
+            "SpecializationRate",
+            "SourceGroupRate"
+        ],
+        "unseen_category_handling": "falls back to global conversion rate for rate features; one-hot uses handle_unknown=ignore"
+    },
+    "output_schema": {
+        "conversion_probability": "float between 0 and 1"
+    }
+}

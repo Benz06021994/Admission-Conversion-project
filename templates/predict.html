@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}Prediction{% endblock %}
+
+{% block content %}
+<div class="main-card">
+    <div class="section-head">
+        <span class="pill">Prediction Module</span>
+        <h1>Lead Conversion Probability Prediction</h1>
+        <p class="subtitle">Fill in the lead details below to predict the probability of admission conversion.</p>
+    </div>
+
+    <form method="POST" action="{{ url_for('predict') }}">
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Contact Owner</label>
+                <select name="Contact Owner" required>
+                    <option value="">Select Contact Owner</option>
+                    {% for item in contact_owners %}
+                    <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Track Interested</label>
+                <select name="Track Interested" required>
+                    <option value="">Select Track Interested</option>
+                    {% for item in track_interested_list %}
+                    <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>District</label>
+                <select name="District" required>
+                    <option value="">Select District</option>
+                    {% for item in districts %}
+                    <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Source of Lead</label>
+                <select name="Source of lead" required>
+                    <option value="">Select Source of Lead</option>
+                    {% for item in source_of_lead_list %}
+                    <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Course</label>
+                <select name="Course" required>
+                    <option value="">Select Course</option>
+                    {% for item in courses %}
+                    <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Specialization</label>
+                <select name="Specialization" required>
+                    <option value="">Select Specialization</option>
+                    {% for item in specializations %}
+                    <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label>
+                <select name="Gender" required>
+                    <option value="">Select Gender</option>
+                    {% for item in genders %}
+                    <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Lead ID</label>
+                <input type="text" name="Lead ID" placeholder="Enter Lead ID" required>
+            </div>
+        </div>
+
+        <div class="button-group center-buttons">
+            <button type="submit" class="btn">Predict Probability</button>
+            <a href="{{ url_for('home') }}" class="btn secondary">Back Home</a>
+            <a href="{{ url_for('dashboard') }}" class="btn ghost">Dashboard</a>
+            <a href="{{ url_for('history') }}" class="btn ghost">History</a>
+        </div>
+    </form>
+
+    {% if prediction_result %}
+<div class="result-box">
+
+    <div class="result-top">
+        <span class="pill success">Prediction Result</span>
+        <h2>Conversion Probability</h2>
+    </div>
+
+    <div class="probability-value">
+        {{ prediction_result.conversion_probability }}
+    </div>
+
+    <p class="score-text">
+        Out of 100
+    </p>
+
+</div>
+{% endif %}
+
+    {% if error_message %}
+    <div class="error-box">
+        <p>{{ error_message }}</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

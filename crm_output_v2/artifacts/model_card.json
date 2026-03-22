@@ -1,0 +1,53 @@
+{
+    "model_name": "XGBoost",
+    "model_params": {
+        "colsample_bytree": 0.9,
+        "eval_metric": "logloss",
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "min_child_weight": 3,
+        "n_estimators": 300,
+        "n_jobs": -1,
+        "random_state": 42,
+        "reg_lambda": 2.0,
+        "scale_pos_weight": 10.315602836879433,
+        "subsample": 0.9,
+        "tree_method": "hist"
+    },
+    "training_years": [
+        2024,
+        2025
+    ],
+    "frontend_inputs": [
+        "Contact Owner",
+        "Track Interested",
+        "District",
+        "Source of lead",
+        "Course",
+        "Specialization",
+        "Gender"
+    ],
+    "goal": "conversion_probability_prediction",
+    "pipeline_contains_feature_engineering": true,
+    "feature_engineering_inside_pipeline": {
+        "source_grouping": true,
+        "smoothed_target_rates": [
+            "OwnerRate",
+            "CourseRate",
+            "TrackRate",
+            "DistrictRate",
+            "SpecializationRate",
+            "SourceGroupRate"
+        ]
+    },
+    "missing_label": "Unspecified",
+    "paths": {
+        "pipeline": "crm_output_v2\\artifacts\\best_pipeline.pkl",
+        "artifact": "crm_output_v2\\artifacts\\best_artifact.pkl"
+    },
+    "test_metrics": {
+        "roc_auc": 0.7785815965053354,
+        "pr_auc": 0.1161212484393167,
+        "brier_score": 0.13325734658839758
+    }
+}

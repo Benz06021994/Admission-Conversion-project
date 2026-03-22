@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Admission Conversion Probability System{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="page-overlay">
+        <div class="app-shell">
+            <header class="topbar">
+                <div class="brand">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="RP2 Logo" class="topbar-logo">
+                    <div>
+                        <p class="brand-kicker">Admission Trend Analysis</p>
+                        <h2 class="brand-title">RP2 Admission Conversion System</h2>
+                    </div>
+                </div>
+
+                <nav class="topbar-nav">
+                    <a href="{{ url_for('home') }}">Home</a>
+                    <a href="{{ url_for('predict') }}">Prediction</a>
+                    <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                    <a href="{{ url_for('history') }}">History</a>
+                </nav>
+            </header>
+
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>
