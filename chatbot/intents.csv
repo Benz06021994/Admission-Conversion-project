@@ -1,0 +1,88 @@
+text,intent
+hi,greeting
+hello,greeting
+hey,greeting
+hii,greeting
+helo,greeting
+good morning,greeting
+good evening,greeting
+hey there,greeting
+hello bot,greeting
+can you assist me,greeting
+
+bye,goodbye
+goodbye,goodbye
+see you later,goodbye
+talk to you later,goodbye
+bye bye,goodbye
+catch you later,goodbye
+ok bye,goodbye
+thanks bye,goodbye
+
+thanks,thanks
+thank you,thanks
+thanks a lot,thanks
+thank you so much,thanks
+thanks for the help,thanks
+great thanks,thanks
+okay thanks,thanks
+many thanks,thanks
+
+what is this project,project_overview
+tell me about this system,project_overview
+what does this application do,project_overview
+what is this admission conversion project,project_overview
+what is the purpose of this project,project_overview
+what is this system used for,project_overview
+explain this project,project_overview
+what does this prediction system do,project_overview
+
+what inputs are required,required_inputs
+which fields should i enter,required_inputs
+what data is needed for prediction,required_inputs
+what are the required fields,required_inputs
+what details should i provide,required_inputs
+which inputs are needed,required_inputs
+what should i enter for prediction,required_inputs
+what columns are used for prediction,required_inputs
+
+how to predict,how_to_predict
+how can i check admission chance,how_to_predict
+how to use this system,how_to_predict
+how can i predict,how_to_predict
+how do i use prediction,how_to_predict
+how to use this predictor,how_to_predict
+how can i check admission prediction,how_to_predict
+how to check conversion chance,how_to_predict
+how do i make a prediction,how_to_predict
+how can i get the result,how_to_predict
+
+what is conversion probability,conversion_probability
+what does percentage mean,conversion_probability
+how is prediction calculated,conversion_probability
+what does the prediction mean,conversion_probability
+what is admission conversion probability,conversion_probability
+what does the score mean,conversion_probability
+what does the result percentage mean,conversion_probability
+what is conversion score,conversion_probability
+
+which model is used,model_used
+what algorithm are you using,model_used
+what machine learning model is used,model_used
+which ml model is used,model_used
+what model powers this system,model_used
+what classifier are you using,model_used
+
+where is data stored,database_info
+which database is used,database_info
+where are prediction results stored,database_info
+is the data saved in database,database_info
+do you store the results,database_info
+what database is connected,database_info
+
+what is dashboard,dashboard_help
+what can i see in dashboard,dashboard_help
+what does dashboard show,dashboard_help
+how does dashboard help,dashboard_help
+what insights are available in dashboard,dashboard_help
+what is shown in the dashboard page,dashboard_help
