@@ -67,7 +67,7 @@ User Query → TF-IDF Vectorization → Logistic Regression → Intent → Respo
 ---
 
 ## 📁 Project Structure
-'''
+```
 chatbot/
 ├── chatbot_nlp.py
 ├── chatbot_responses.py
@@ -77,7 +77,7 @@ chatbot/
 
 crm_model.py
 requirements.txt
-'''
+```
 
 ---
 
