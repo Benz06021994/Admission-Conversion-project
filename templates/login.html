@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Admission Conversion System</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+
+<body class="login-page">
+
+<div class="login-wrapper">
+
+<div class="login-card">
+
+
+<div class="login-logo">
+
+<img src="{{ url_for('static', filename='images/logo.png') }}">
+
+<h2>Admission Conversion</h2>
+
+<p>Prediction System</p>
+
+</div>
+
+
+
+<div class="login-tabs">
+
+<a class="active">Login</a>
+
+<a href="/register">Register</a>
+
+<a href="/forgot-password">Reset</a>
+
+</div>
+
+
+<!-- ✅ ERROR MESSAGE (NEW) -->
+{% if message %}
+<p style="color:red; text-align:center;">
+    {{ message }}
+</p>
+{% endif %}
+
+
+<form method="POST" action="/login">
+
+<label>User ID</label>
+
+<input 
+type="text"
+name="username"
+placeholder="Enter your User ID"
+required
+>
+
+
+<label>Password</label>
+
+<input
+type="password"
+name="password"
+placeholder="Enter your password"
+required
+>
+
+
+<label>Role</label>
+
+<select name="role">
+
+<option value="officer">Officer</option>
+
+<option value="admin">Admin</option>
+
+</select>
+
+
+
+<button type="submit" class="login-btn">
+
+Sign In
+
+</button>
+
+</form>
+
+
+
+<div class="login-note">
+
+
+
+</div>
+
+
+</div>
+
+</div>
+
+</body>
+
+</html>

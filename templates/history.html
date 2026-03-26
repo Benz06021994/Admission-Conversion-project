@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Prediction History</h2>
+
+{% if officers %}
+<form method="get">
+
+<label>Filter Officer:</label>
+<select name="officer">
+<option value="">All Officers</option>
+
+{% for officer in officers %}
+<option value="{{ officer['userid'] }}"
+{% if request.args.get('officer') == officer['userid'] %}selected{% endif %}>
+{{ officer['userid'] }}
+</option>
+{% endfor %}
+
+</select>
+
+<button type="submit">Apply Filter</button>
+
+</form>
+<br>
+{% endif %}
+
+<a href="/export/csv?officer={{ request.args.get('officer','') }}">
+<button class="btn-green">Download CSV</button>
+</a>
+
+<br><br>
+
+<form method="get">
+
+<input type="text" name="lead_id" placeholder="Search Lead ID">
+
+{% if request.args.get('officer') %}
+<input type="hidden" name="officer" value="{{ request.args.get('officer') }}">
+{% endif %}
+
+<button type="submit">Search</button>
+
+</form>
+
+<br>
+
+<table>
+
+<tr>
+<th>Lead ID</th>
+<th>Officer</th>
+<th>Contact Owner</th>
+<th>Track</th>
+<th>District</th>
+<th>Source</th>
+<th>Course</th>
+<th>Specialization</th>
+<th>Gender</th>
+<th>Probability</th>
+<th>Score</th>
+<th>Status</th>
+<th>Converted</th>
+<th>Date</th>
+<th>Actions</th>
+</tr>
+
+{% for row in rows %}
+<tr>
+
+<td>{{ row["lead_id"] }}</td>
+<td>{{ row["userid"] }}</td>
+<td>{{ row["contact_owner"] }}</td>
+<td>{{ row["track_interested"] }}</td>
+<td>{{ row["district"] }}</td>
+<td>{{ row["source_of_lead"] }}</td>
+<td>{{ row["course"] }}</td>
+<td>{{ row["specialization"] }}</td>
+<td>{{ row["gender"] }}</td>
+<td>{{ "%.2f"|format(row["conversion_probability"]*100) }}%</td>
+<td>{{ row["score"] }}</td>
+
+<!-- NEW STATUS -->
+<td>
+{% if row["score"] >= 70 %}
+<span style="color:green;font-weight:600;">High</span>
+{% elif row["score"] >= 40 %}
+<span style="color:orange;font-weight:600;">Medium</span>
+{% else %}
+<span style="color:red;font-weight:600;">Low</span>
+{% endif %}
+</td>
+
+<td>
+<form action="/toggle-conversion/{{ row['id'] }}" method="post">
+<input type="checkbox"
+{% if row["converted"] == 1 %}checked{% endif %}
+onchange="this.form.submit()">
+</form>
+</td>
+
+<td>{{ row["predicted_at"] }}</td>
+
+<td>
+<a href="{{ url_for('edit_lead', id=row['id']) }}">✏️</a>
+<a href="{{ url_for('delete_lead', id=row['id']) }}"
+onclick="return confirm('Delete this lead?')">🗑</a>
+</td>
+
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Admission Insights Dashboard</h2>
+<p>Track performance and improve conversion strategy</p>
+
+<!-- FILTER -->
+<form method="get">
+
+{% if session.role == "admin" %}
+<select name="officer">
+<option value="">All Officers</option>
+{% for o in officers %}
+<option value="{{ o['userid'] }}">{{ o['userid'] }}</option>
+{% endfor %}
+</select>
+{% endif %}
+
+<input type="date" name="date">
+<input type="month" name="month">
+<input type="number" name="year" placeholder="Year">
+
+<button type="submit">Apply</button>
+
+<a href="/dashboard">
+<button type="button">Reset</button>
+</a>
+
+</form>
+
+<br>
+
+<!-- KPI -->
+<div class="card-grid fade-in">
+
+<div class="card kpi"><h3>Total</h3><p>{{ total }}</p></div>
+<div class="card kpi green"><h3>Converted</h3><p>{{ converted }}</p></div>
+<div class="card kpi red"><h3>Not Converted</h3><p>{{ not_converted }}</p></div>
+<div class="card kpi purple"><h3>Avg Score</h3><p>{{ avg_score }}</p></div>
+<div class="card kpi blue"><h3>Conversion %</h3><p>{{ conversion_rate }}%</p></div>
+<div class="card kpi"><h3>Best Officer</h3><p>{{ best_officer }}</p></div>
+
+</div>
+
+<br>
+
+<!-- CHARTS -->
+<div class="card fade-in">
+<h3>Analytics Overview</h3>
+
+<div class="chart-grid">
+
+    <div class="chart-card">
+        <h4>Lead Conversion</h4>
+        <canvas id="resultChart"></canvas>
+    </div>
+
+    <div class="chart-card">
+        <h4>Course Distribution</h4>
+        <canvas id="courseChart"></canvas>
+    </div>
+
+    <div class="chart-card">
+        <h4>Lead Sources</h4>
+        <canvas id="sourceChart"></canvas>
+    </div>
+
+</div>
+
+</div>
+
+<br>
+
+<!-- INSIGHT -->
+<div class="card fade-in">
+<h3>Insights</h3>
+<ul>
+<li>Focus on high conversion leads for quick closure</li>
+<li>Medium leads need follow-up</li>
+<li>Low leads need re-engagement</li>
+</ul>
+</div>
+
+<br>
+
+<div class="card fade-in">
+<h3>Next Step</h3>
+<p>Prioritize high probability leads to improve conversions.</p>
+</div>
+
+<!-- CHART.JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- CHART SCRIPT -->
+<script>
+fetch("/dashboard-data")
+.then(res => res.json())
+.then(data => {
+
+    // RESULT CHART
+    new Chart(document.getElementById("resultChart"), {
+        type: "doughnut",
+        data: {
+            labels: ["High", "Medium", "Low"],
+            datasets: [{
+                data: [data.high, data.medium, data.low]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: "bottom" }
+            }
+        }
+    });
+
+    // COURSE CHART
+    new Chart(document.getElementById("courseChart"), {
+        type: "bar",
+        data: {
+            labels: Object.keys(data.courses),
+            datasets: [{
+                label: "Leads",
+                data: Object.values(data.courses)
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    // SOURCE CHART
+    new Chart(document.getElementById("sourceChart"), {
+        type: "pie",
+        data: {
+            labels: Object.keys(data.sources),
+            datasets: [{
+                data: Object.values(data.sources)
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+});
+</script>
+
+{% endblock %}

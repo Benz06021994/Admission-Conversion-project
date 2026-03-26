@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- NEW HEADER CARD -->
+<div class="card">
+<h3>Candidate Evaluation</h3>
+<p>Select lead details to predict admission chances</p>
+</div>
+
+<div class="card">
+
+<form method="POST">
+
+<label>Lead ID</label>
+<input type="text" name="Lead ID" placeholder="Enter Lead ID" required>
+
+<label>Contact Owner</label>
+<select name="Contact Owner" required>
+{% for owner in contact_owners %}
+<option value="{{ owner }}">{{ owner }}</option>
+{% endfor %}
+</select>
+
+<label>Track Interested</label>
+<select name="Track Interested" required>
+{% for track in track_interested_list %}
+<option value="{{ track }}">{{ track }}</option>
+{% endfor %}
+</select>
+
+<label>District</label>
+<select name="District" required>
+{% for district in districts %}
+<option value="{{ district }}">{{ district }}</option>
+{% endfor %}
+</select>
+
+<label>Source of Lead</label>
+<select name="Source of lead" required>
+{% for source in source_of_lead_list %}
+<option value="{{ source }}">{{ source }}</option>
+{% endfor %}
+</select>
+
+<label>Course</label>
+<select name="Course" required>
+{% for course in courses %}
+<option value="{{ course }}">{{ course }}</option>
+{% endfor %}
+</select>
+
+<label>Specialization</label>
+<select name="Specialization" required>
+{% for spec in specializations %}
+<option value="{{ spec }}">{{ spec }}</option>
+{% endfor %}
+</select>
+
+<label>Gender</label>
+<select name="Gender" required>
+{% for g in genders %}
+<option value="{{ g }}">{{ g }}</option>
+{% endfor %}
+</select>
+
+<button class="btn-blue" type="submit">Predict</button>
+
+</form>
+
+</div>
+
+{% if prediction %}
+
+<div class="popup-overlay">
+<div class="popup-card">
+
+<h2>Prediction Result</h2>
+
+<p><strong>Conversion Probability:</strong> {{ prediction.prob }}%</p>
+<p><strong>Score:</strong> {{ prediction.score }}</p>
+<p><strong>Status:</strong> {{ prediction.label }}</p>
+
+<hr>
+
+<p style="color:green;">✔ {{ prediction.positive }}</p>
+<p style="color:red;">⚠ {{ prediction.negative }}</p>
+
+<button onclick="window.location.href='/predict'">Close</button>
+
+</div>
+</div>
+
+{% endif %}
+
+{% endblock %}

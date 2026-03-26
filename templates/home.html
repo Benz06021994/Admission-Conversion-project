@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<div class="card hero">
+
+    <h1>AI Lead Conversion System</h1>
+
+    <p>
+    Make smarter admission decisions using AI-powered predictions and analytics.
+    </p>
+
+    <div class="hero-buttons">
+
+        <a href="/predict" class="btn-blue">Start Evaluation</a>
+        <a href="/dashboard" class="btn-purple">View Dashboard</a>
+        <a href="/history" class="btn-green">View History</a>
+
+    </div>
+
+</div>
+
+
+<!-- ✅ SLIDER SECTION -->
+<div class="card slider-container">
+
+    <!-- ABOUT -->
+    <div class="slide active">
+        <h2>About This System</h2>
+        <p>
+        This system helps admission teams predict the chances of converting leads into successful enrollments.
+        Using machine learning, it analyzes lead details and provides insights to improve decision-making,
+        prioritize leads, and increase overall conversion rates.
+        </p>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="slide">
+        <h2>What You Can Do</h2>
+
+        <ul class="center-list">
+            <li>✔ Predict Leads instantly using AI</li>
+            <li>✔ Track and manage lead history</li>
+            <li>✔ View dashboard insights and analytics</li>
+        </ul>
+    </div>
+
+    <!-- VALUE -->
+    <div class="slide">
+        <h2>Why Use This System?</h2>
+
+        <ul class="center-list">
+            <li>✔ Faster decision making</li>
+            <li>✔ Better lead prioritization</li>
+            <li>✔ Improved conversion rates</li>
+            <li>✔ Easy lead tracking</li>
+        </ul>
+    </div>
+
+</div>
+
+{% endblock %}

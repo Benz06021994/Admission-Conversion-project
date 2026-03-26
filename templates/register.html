@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Create User</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body class="login-page">
+
+<div class="login-wrapper">
+
+<div class="login-card">
+
+<div class="login-logo">
+
+<img src="{{ url_for('static', filename='images/logo.png') }}">
+
+<h2>Admission Conversion</h2>
+
+<p>Create Officer Account</p>
+
+</div>
+
+
+<div class="login-tabs">
+
+<a href="/login">Login</a>
+
+<a class="active">Register</a>
+
+<a href="/forgot-password">Reset</a>
+
+</div>
+
+
+<form method="POST">
+
+<label>User Name</label>
+<input type="text" name="username" required>
+
+
+<label>Email</label>
+<input type="email" name="email" required>
+
+
+<label>Password</label>
+<input type="password" name="password" required>
+
+
+<label>Confirm Password</label>
+<input type="password" name="confirm_password" required>
+
+
+<button type="submit" class="login-btn">
+
+Create User
+    {% if message %}
+    <p style="color:green; text-align:center;">
+        {{ message|safe }}
+    </p>
+    {% endif %}
+
+</button>
+
+</form>
+
+
+</div>
+
+</div>
+
+</body>
+
+</html>

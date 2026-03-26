@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>AI Lead Conversion System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
+
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <div class="navbar">
+
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+            <span class="title">AI Lead Conversion System</span>
+        </div>
+
+        <div class="nav-right">
+
+            <a href="/">Home</a>
+
+            {% if session.get('role') == "officer" %}
+                <a href="/predict"><i class="fa fa-brain"></i> Evaluate</a>
+            {% endif %}
+
+            <a href="/history"><i class="fa fa-clock"></i> History</a>
+            <a href="/dashboard"><i class="fa fa-chart-line"></i> Dashboard</a>
+            <a href="javascript:history.back()"><i class="fa fa-arrow-left"></i> Back</a>
+            <a href="/logout"><i class="fa fa-sign-out-alt"></i> Logout</a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="main-container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+
+    <!-- ===== CHATBOT BUTTON ===== -->
+    <div id="chatbot-icon">💬</div>
+
+
+    <!-- ===== CHATBOX ===== -->
+    <div id="chatbot-box">
+        <div class="chat-header">Chat Assistant</div>
+
+        <div id="chat-messages"></div>
+
+        <div class="chat-input">
+            <input type="text" id="chat-input" placeholder="Ask something...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        // ===== CHAT TOGGLE =====
+        const chatBox = document.getElementById("chatbot-box");
+        const chatIcon = document.getElementById("chatbot-icon");
+
+        chatIcon.onclick = () => {
+            chatBox.style.display =
+                chatBox.style.display === "flex" ? "none" : "flex";
+        };
+
+
+        // ===== SEND MESSAGE =====
+        window.sendMessage = function () {
+
+            const input = document.getElementById("chat-input");
+            const message = input.value;
+
+            if (!message) return;
+
+            const messages = document.getElementById("chat-messages");
+
+            messages.innerHTML += `<div class="user-msg">${message}</div>`;
+
+            fetch("/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ message: message })
+            })
+            .then(res => res.json())
+            .then(data => {
+                messages.innerHTML += `<div class="bot-msg">${data.reply}</div>`;
+                messages.scrollTop = messages.scrollHeight;
+            })
+            .catch(() => {
+                messages.innerHTML += `<div class="bot-msg">Error connecting to bot</div>`;
+            });
+
+            input.value = "";
+        };
+
+
+        // ===== SLIDER ANIMATION =====
+        let slides = document.querySelectorAll(".slide");
+        let index = 0;
+
+        if (slides.length > 0) {
+
+            slides[index].classList.add("active");
+
+            setInterval(() => {
+
+                slides[index].classList.remove("active");
+
+                index = (index + 1) % slides.length;
+
+                slides[index].classList.add("active");
+
+            }, 3000);
+        }
+
+
+        // ===== SCROLL ANIMATION (NEW FIX) =====
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll(".fade-in").forEach(el => {
+            observer.observe(el);
+        });
+
+    });
+    </script>
+
+</body>
+
+</html>
