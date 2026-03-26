@@ -11,6 +11,7 @@ This system helps:
 - Identify high-potential leads
 - Prioritize follow-ups
 - Improve conversion efficiency
+- Supports business decision-making for placement officers
 
 ---
 
@@ -25,13 +26,13 @@ This system helps:
 - Answers user queries intelligently
 - Built using:
   - TF-IDF Vectorizer
-  - Logistic Regression
-- Handles queries such as:
-  - What is this project?
-  - What inputs are required?
-  - How to predict?
-  - What does the percentage mean?
-  - Which model is used?
+  - Logistic Regression (selected after comparison with Naive Bayes)
+- Handles both:
+  - System-level queries (inputs, prediction, dashboard)
+  - Business-level queries (lead priority, follow-up strategy, score interpretation)
+- Returns:
+  - Response (for UI)
+  - Intent and confidence (for backend/database logging)
 
 ---
 
@@ -53,7 +54,7 @@ This system helps:
 ---
 
 ### Chatbot Flow
-User Query → TF-IDF Vectorization → Logistic Regression → Intent → Response
+User Query → TF-IDF Vectorization → Logistic Regression → Intent → Response + Confidence
 
 ---
 
@@ -73,7 +74,7 @@ chatbot/
 ├── chatbot_responses.py
 ├── intents.csv
 ├── train_chatbot.py
-├── chatbot_intent_model.pkl
+git├── chatbot_intent_model.pkl
 
 crm_model.py
 requirements.txt
