@@ -86,3 +86,52 @@ what does dashboard show,dashboard_help
 how does dashboard help,dashboard_help
 what insights are available in dashboard,dashboard_help
 what is shown in the dashboard page,dashboard_help
+
+which leads should i follow up first,lead_priority
+which leads are important,lead_priority
+how to prioritize leads,lead_priority
+which leads have high chance,lead_priority
+which leads should i call first,lead_priority
+how do i know which lead to focus,lead_priority
+which students should i contact first,lead_priority
+which prospects are top priority,lead_priority
+
+how should i follow up,followup_strategy
+when should i follow up,followup_strategy
+what is the best follow up strategy,followup_strategy
+how often should i contact leads,followup_strategy
+what should i do after prediction,followup_strategy
+how should placement officers follow up,followup_strategy
+what is the next step after getting score,followup_strategy
+
+what is a good conversion score,score_interpretation
+what is considered high probability,score_interpretation
+is 80 percent good,score_interpretation
+what does low score mean,score_interpretation
+how to understand prediction score,score_interpretation
+what is a strong lead score,score_interpretation
+how do i know if score is good,score_interpretation
+
+can i trust this model,model_trust
+how accurate is this model,model_trust
+is this prediction reliable,model_trust
+how confident is the model,model_trust
+is this system accurate,model_trust
+can i depend on this score,model_trust
+is this tool trustworthy,model_trust
+
+which lead source performs best,source_performance
+which source gives best conversion,source_performance
+which source is most effective,source_performance
+where do best leads come from,source_performance
+which source has highest conversion,source_performance
+which source is better,source_performance
+best source for admissions,source_performance
+
+how should i use this system daily,system_usage
+how does this help my work,system_usage
+how can this system improve my performance,system_usage
+how should i use prediction results,system_usage
+how should placement officers use this system,system_usage
+how can this help the team,system_usage
+how do we use this in daily work,system_usage

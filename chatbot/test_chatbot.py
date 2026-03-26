@@ -1,4 +1,4 @@
-from .chatbot_nlp import get_chatbot_response
+from .chatbot_nlp import get_chatbot_result
 
 print("Chatbot test started. Type 'exit' to stop.\n")
 
@@ -8,5 +8,8 @@ while True:
         print("Chatbot test ended.")
         break
 
-    response = get_chatbot_response(user_message)
-    print("Bot:", response)
+    result = get_chatbot_result(user_message)
+    print("Bot:", result["response"])
+    print("Intent:", result["intent"])
+    print("Confidence:", round(result["confidence"], 4))
+    print()
