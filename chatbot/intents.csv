@@ -6,9 +6,24 @@ hii,greeting
 helo,greeting
 good morning,greeting
 good evening,greeting
+good afternoon,greeting
 hey there,greeting
 hello bot,greeting
+hi bot,greeting
+hello there,greeting
+hey bot,greeting
+hi chatbot,greeting
+hello chatbot,greeting
+can you help me,greeting
+need your help,greeting
+are you there,greeting
 can you assist me,greeting
+help me,greeting
+yo,greeting
+hi there,greeting
+good day,greeting
+hello my friend,greeting
+hey chatbot,greeting
 
 bye,goodbye
 goodbye,goodbye
@@ -18,6 +33,13 @@ bye bye,goodbye
 catch you later,goodbye
 ok bye,goodbye
 thanks bye,goodbye
+see you,goodbye
+i will come later,goodbye
+talk later,goodbye
+see you soon,goodbye
+have a nice day,goodbye
+ok see you,goodbye
+bye for now,goodbye
 
 thanks,thanks
 thank you,thanks
@@ -27,6 +49,13 @@ thanks for the help,thanks
 great thanks,thanks
 okay thanks,thanks
 many thanks,thanks
+thanks chatbot,thanks
+thanks buddy,thanks
+appreciate it,thanks
+thank you for your support,thanks
+much appreciated,thanks
+thanks dear,thanks
+cool thanks,thanks
 
 what is this project,project_overview
 tell me about this system,project_overview
@@ -36,6 +65,13 @@ what is the purpose of this project,project_overview
 what is this system used for,project_overview
 explain this project,project_overview
 what does this prediction system do,project_overview
+tell me about this project,project_overview
+what is the use of this system,project_overview
+how does this project work,project_overview
+what is this chatbot for,project_overview
+what is this tool,project_overview
+what does this tool do,project_overview
+why was this system built,project_overview
 
 what inputs are required,required_inputs
 which fields should i enter,required_inputs
@@ -45,6 +81,18 @@ what details should i provide,required_inputs
 which inputs are needed,required_inputs
 what should i enter for prediction,required_inputs
 what columns are used for prediction,required_inputs
+what information do you need,required_inputs
+what details are needed,required_inputs
+what inputs do you want,required_inputs
+what should i provide,required_inputs
+what all details are required,required_inputs
+tell me the required inputs,required_inputs
+what should i fill in,required_inputs
+what lead details do you need,required_inputs
+what are the seven inputs,required_inputs
+which details are compulsory,required_inputs
+what do you need from me,required_inputs
+what fields are mandatory,required_inputs
 
 how to predict,how_to_predict
 how can i check admission chance,how_to_predict
@@ -56,6 +104,26 @@ how can i check admission prediction,how_to_predict
 how to check conversion chance,how_to_predict
 how do i make a prediction,how_to_predict
 how can i get the result,how_to_predict
+how to predict a lead,how_to_predict
+how do i predict a lead,how_to_predict
+how can i predict a lead,how_to_predict
+how do i check whether a lead will convert,how_to_predict
+how can i see admission probability,how_to_predict
+how should i use this system daily,how_to_predict
+how does this help my work,how_to_predict
+how can this system improve my performance,how_to_predict
+how should i use prediction results,how_to_predict
+how should placement officers use this system,how_to_predict
+how can this help the team,how_to_predict
+how do we use this in daily work,how_to_predict
+how to use this system effectively,how_to_predict
+how should our team use this,how_to_predict
+how can i use this every day,how_to_predict
+how do i work with this tool,how_to_predict
+how do i use this chatbot,how_to_predict
+how can i use this chatbot,how_to_predict
+how does this chatbot help me,how_to_predict
+how do i start prediction,how_to_predict
 
 what is conversion probability,conversion_probability
 what does percentage mean,conversion_probability
@@ -65,6 +133,28 @@ what is admission conversion probability,conversion_probability
 what does the score mean,conversion_probability
 what does the result percentage mean,conversion_probability
 what is conversion score,conversion_probability
+what is the meaning of probability,conversion_probability
+what does conversion chance mean,conversion_probability
+what does admission chance mean,conversion_probability
+what is the prediction percentage,conversion_probability
+what is this score,conversion_probability
+what is a good conversion score,conversion_probability
+what is considered high probability,conversion_probability
+is 80 percent good,conversion_probability
+what does low score mean,conversion_probability
+how to understand prediction score,conversion_probability
+what is a strong lead score,conversion_probability
+how do i know if score is good,conversion_probability
+is 70 a good score,conversion_probability
+is 60 percent good,conversion_probability
+what is a bad score,conversion_probability
+what does high score mean,conversion_probability
+what does medium score mean,conversion_probability
+how to read the score,conversion_probability
+is 90 percent good,conversion_probability
+what does 50 percent mean,conversion_probability
+how do i interpret the result,conversion_probability
+what does this probability tell me,conversion_probability
 
 which model is used,model_used
 what algorithm are you using,model_used
@@ -72,6 +162,15 @@ what machine learning model is used,model_used
 which ml model is used,model_used
 what model powers this system,model_used
 what classifier are you using,model_used
+which algorithm is used,model_used
+what model is behind this chatbot,model_used
+what model do you use,model_used
+is logistic regression used,model_used
+what ml algorithm is behind this,model_used
+what technique are you using,model_used
+which method is used,model_used
+what prediction model is this,model_used
+what chatbot model is this,model_used
 
 where is data stored,database_info
 which database is used,database_info
@@ -79,6 +178,15 @@ where are prediction results stored,database_info
 is the data saved in database,database_info
 do you store the results,database_info
 what database is connected,database_info
+is the prediction saved,database_info
+where is chatbot data stored,database_info
+is conversation stored,database_info
+do you save chatbot logs,database_info
+where are logs stored,database_info
+is postgresql used,database_info
+is the chat saved,database_info
+are predictions stored,database_info
+where is user data stored,database_info
 
 what is dashboard,dashboard_help
 what can i see in dashboard,dashboard_help
@@ -86,6 +194,15 @@ what does dashboard show,dashboard_help
 how does dashboard help,dashboard_help
 what insights are available in dashboard,dashboard_help
 what is shown in the dashboard page,dashboard_help
+what is available in the dashboard,dashboard_help
+what do i see in dashboard,dashboard_help
+what charts are in dashboard,dashboard_help
+how is dashboard useful,dashboard_help
+show me dashboard information,dashboard_help
+what does the dashboard contain,dashboard_help
+what can dashboard display,dashboard_help
+how can dashboard help the team,dashboard_help
+what visuals are in dashboard,dashboard_help
 
 which leads should i follow up first,lead_priority
 which leads are important,lead_priority
@@ -95,6 +212,18 @@ which leads should i call first,lead_priority
 how do i know which lead to focus,lead_priority
 which students should i contact first,lead_priority
 which prospects are top priority,lead_priority
+which leads should i prioritize,lead_priority
+who should i contact first,lead_priority
+which lead is best,lead_priority
+which leads are high priority,lead_priority
+tell me which leads to focus on,lead_priority
+which leads are most likely to convert,lead_priority
+which lead should i attend first,lead_priority
+how do i choose priority leads,lead_priority
+who needs immediate follow up,lead_priority
+which lead is stronger,lead_priority
+which lead should i work first,lead_priority
+how do i identify top leads,lead_priority
 
 how should i follow up,followup_strategy
 when should i follow up,followup_strategy
@@ -103,14 +232,19 @@ how often should i contact leads,followup_strategy
 what should i do after prediction,followup_strategy
 how should placement officers follow up,followup_strategy
 what is the next step after getting score,followup_strategy
-
-what is a good conversion score,score_interpretation
-what is considered high probability,score_interpretation
-is 80 percent good,score_interpretation
-what does low score mean,score_interpretation
-how to understand prediction score,score_interpretation
-what is a strong lead score,score_interpretation
-how do i know if score is good,score_interpretation
+what should be my follow up plan,followup_strategy
+how do i follow up these leads,followup_strategy
+what action should i take after prediction,followup_strategy
+how to handle low probability leads,followup_strategy
+how to handle medium probability leads,followup_strategy
+how to handle high probability leads,followup_strategy
+how should i treat low score leads,followup_strategy
+what should i do with high score leads,followup_strategy
+what should i do with medium score leads,followup_strategy
+how should i contact these leads,followup_strategy
+what is the correct next action,followup_strategy
+how should i proceed after prediction,followup_strategy
+what follow up is recommended,followup_strategy
 
 can i trust this model,model_trust
 how accurate is this model,model_trust
@@ -119,6 +253,14 @@ how confident is the model,model_trust
 is this system accurate,model_trust
 can i depend on this score,model_trust
 is this tool trustworthy,model_trust
+should i trust this result,model_trust
+is this chatbot reliable,model_trust
+is the model dependable,model_trust
+how reliable is this system,model_trust
+can we depend on this system,model_trust
+is this score trustworthy,model_trust
+how much can i trust this output,model_trust
+is the prediction dependable,model_trust
 
 which lead source performs best,source_performance
 which source gives best conversion,source_performance
@@ -127,11 +269,37 @@ where do best leads come from,source_performance
 which source has highest conversion,source_performance
 which source is better,source_performance
 best source for admissions,source_performance
+which source performs well,source_performance
+best converting source,source_performance
+where are quality leads coming from,source_performance
+which source brings better leads,source_performance
+which source gives quality leads,source_performance
+what is the best lead source,source_performance
+which source should we focus on,source_performance
+where are the top leads coming from,source_performance
 
-how should i use this system daily,system_usage
-how does this help my work,system_usage
-how can this system improve my performance,system_usage
-how should i use prediction results,system_usage
-how should placement officers use this system,system_usage
-how can this help the team,system_usage
-how do we use this in daily work,system_usage
+will this lead convert,predict_conversion
+predict this student,predict_conversion
+check conversion probability,predict_conversion
+can you predict admission conversion,predict_conversion
+is this lead likely to convert,predict_conversion
+predict the lead,predict_conversion
+show conversion chance,predict_conversion
+can you evaluate this lead,predict_conversion
+predict this lead,predict_conversion
+check this lead,predict_conversion
+can you check this lead,predict_conversion
+tell me if this lead will convert,predict_conversion
+find admission probability,predict_conversion
+predict conversion for this lead,predict_conversion
+check admission conversion,predict_conversion
+evaluate this student,predict_conversion
+can you predict this lead,predict_conversion
+show me the probability,predict_conversion
+give me conversion probability,predict_conversion
+check whether this lead will convert,predict_conversion
+please predict this lead,predict_conversion
+can you predict now,predict_conversion
+let me know the conversion chance,predict_conversion
+help me predict this lead,predict_conversion
+can you evaluate this student now,predict_conversion
