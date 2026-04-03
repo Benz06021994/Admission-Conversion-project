@@ -1,88 +1,165 @@
-# Admission Conversion Prediction System
+# 🎓 Admission Conversion Prediction System with NLP Chatbot
+
+---
 
 ## 📌 Overview
-This project predicts the probability of converting a lead into an admission using Machine Learning. It also includes an NLP-based chatbot to assist users in understanding the system and interacting with it.
+
+This project predicts **admission conversion probability** and provides an **NLP-based chatbot interface** for placement officers.
+
+It enables:
+- 📊 Data-driven decision making  
+- 🎯 Lead prioritization  
+- 🤖 Conversational interaction  
 
 ---
 
-## 🎯 Business Problem
-Educational institutes receive a large number of leads, but not all convert into admissions.  
-This system helps:
-- Identify high-potential leads
-- Prioritize follow-ups
-- Improve conversion efficiency
-- Supports business decision-making for placement officers
+## 🧠 Key Features
+
+### 🔹 Machine Learning Model
+- Predicts **conversion probability (not binary output)**
+- Uses custom feature engineering via `CRMFeatureBuilder`
+- Handles **class imbalance effectively**
+- Outputs probability for better business decisions
 
 ---
 
-## ⚙️ Features
-
-### 1. Admission Prediction Model
-- Predicts conversion probability (0–100%)
-- Uses structured CRM data
-- Supports decision-making for sales teams
-
-### 2. NLP Chatbot
-- Answers user queries intelligently
-- Built using:
-  - TF-IDF Vectorizer
-  - Logistic Regression (selected after comparison with Naive Bayes)
-- Handles both:
-  - System-level queries (inputs, prediction, dashboard)
-  - Business-level queries (lead priority, follow-up strategy, score interpretation)
+### 🔹 NLP Chatbot
+- Built using **TF-IDF + Logistic Regression**
+- Supports **multiple business intents**
 - Returns:
-  - Response (for UI)
-  - Intent and confidence (for backend/database logging)
+  - Response
+  - Intent
+  - Confidence score
 
 ---
 
-## 🧠 How It Works
+### 🔹 Step-by-Step Prediction (Conversational AI)
 
-### Prediction Model
-1. User provides input features:
-   - Contact Owner
-   - Track Interested
-   - District
-   - Source of Lead
-   - Course
-   - Specialization
-   - Gender
+The chatbot collects lead details **one by one**:
 
-2. Model processes inputs and outputs:
-   👉 Conversion Probability
+1. Contact Owner  
+2. Track Interested  
+3. District  
+4. Source of lead  
+5. Course  
+6. Specialization  
+7. Gender  
 
----
-
-### Chatbot Flow
-User Query → TF-IDF Vectorization → Logistic Regression → Intent → Response + Confidence
+👉 After collecting all inputs, it predicts conversion probability.
 
 ---
 
-## 🛠️ Tech Stack
-- Python
-- Scikit-learn
-- Pandas, NumPy
-- Flask (for integration)
-- PostgreSQL (for storage)
+### 🔹 Session Handling
+- Maintains conversation state using session memory
+- Supports:
+  - Multi-step interaction  
+  - Cancel / Reset (`cancel`, `stop`, `reset`)
 
 ---
 
-## 📁 Project Structure
-```
+## 📂 Project Structure
+
+```text
 chatbot/
-├── chatbot_nlp.py
-├── chatbot_responses.py
+├── chatbot_nlp.py          # Chatbot logic
+├── chatbot_intent_model.pkl
+├── chatbot_vectorizer.pkl
 ├── intents.csv
-├── train_chatbot.py
-git├── chatbot_intent_model.pkl
 
-crm_model.py
-requirements.txt
+crm_output_v2/artifacts/
+└── best_pipeline.pkl       # ML model
+
+crm_model.py                # Feature engineering class
 ```
 
 ---
 
-## ▶️ How to Run Chatbot
+## ⚙️ How to Use
 
-```bash
-python -m chatbot.test_chatbot
+### 🔹 Function
+
+```python
+get_chatbot_response(message, user_id)
+```
+
+---
+
+### 🔹 Input
+
+- `message`: User input text  
+- `user_id`: Unique session identifier (**important for step-by-step flow**)
+
+---
+
+### 🔹 Output
+
+Returns:
+
+- response  
+- intent  
+- confidence  
+- requires_lead_data  
+- prediction (after all inputs collected)
+
+---
+
+## 🔁 Example Flow
+
+User: predict this lead  
+Bot: Please provide Contact Owner  
+
+User: Sales Person 1  
+Bot: Please provide Track Interested  
+
+...  
+
+Bot: Predicted conversion probability: 78%  
+
+---
+
+## 🗄️ Database Integration (Planned)
+
+### Tables:
+- chatbot_logs  
+- predictions  
+
+Used for:
+- Analytics  
+- Dashboard  
+- Performance tracking  
+
+---
+
+## 🚀 Deployment
+
+Recommended platform:
+
+👉 **Render (PaaS)**  
+- Easy Flask deployment  
+- PostgreSQL support  
+- Free tier available for starters
+
+---
+
+## 📊 Model Performance
+
+- 🎯 Accuracy: ~90%  
+- 🔁 Cross-validation: ~85%  
+
+---
+
+## 🎯 Business Value
+
+- Helps **prioritize leads**  
+- Improves **conversion rate**  
+- Enables **data-driven decisions**  
+
+---
+
+## 🔮 Future Improvements
+
+- Store sessions in database  
+- Improve UI (progress tracking)  
+- Continuous model retraining  
+
+---
